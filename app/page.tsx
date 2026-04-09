@@ -46,7 +46,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
-                href="#"
+                href="#contact"
                 className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#2E86C1] text-white font-bold text-base hover:bg-[#2472a8] active:scale-95 transition-all duration-150 shadow-xl shadow-[#2E86C1]/30"
               >
                 Gratis kennismaken
@@ -176,7 +176,7 @@ export default function Home() {
                   geen startups die leven van risicokapitaal.
                 </p>
                 <a
-                  href="#"
+                  href="/contact"
                   className="inline-flex items-center px-6 py-3 rounded-full bg-[#1A3A5C] text-white font-semibold text-sm hover:bg-[#142d47] active:scale-95 transition-all duration-150 shadow-lg"
                 >
                   Plan een kennismakingsgesprek
@@ -272,7 +272,7 @@ export default function Home() {
         ]} />
 
         {/* ── FINAL CTA ── */}
-        <section className="relative py-28">
+        <section id="contact" className="relative py-28">
           <div className="absolute inset-0 bg-[#EBF5FB]/95 pointer-events-none" />
           <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#2E86C1] mb-4">
@@ -286,7 +286,7 @@ export default function Home() {
               verkooppraatje. Gewoon kijken wat AI voor jouw bedrijf kan doen.
             </p>
             <a
-              href="#"
+              href="/contact"
               className="inline-flex items-center px-8 py-4 rounded-full bg-[#2E86C1] text-white font-bold text-lg hover:bg-[#2472a8] active:scale-95 transition-all duration-150 shadow-xl shadow-[#2E86C1]/30"
             >
               Plan een gratis gesprek

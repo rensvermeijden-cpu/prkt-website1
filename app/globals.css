@@ -35,6 +35,7 @@
   body {
     @apply bg-transparent text-foreground;
     letter-spacing: 0.01em;
+    scroll-behavior: smooth;
   }
 }
 
