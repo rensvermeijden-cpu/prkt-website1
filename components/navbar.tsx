@@ -17,76 +17,106 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  const close = () => setOpen(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur-md bg-[#0d1f33]/80">
+    <header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        background: "rgba(13,31,51,0.85)",
+      }}
+    >
+      {/* Main bar */}
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-white font-black text-2xl tracking-tight" onClick={() => setOpen(false)}>
-          Prkt<span className="text-[#2E86C1]">.</span>
+        <Link
+          href="/"
+          onClick={close}
+          className="text-white font-black text-2xl tracking-tight"
+        >
+          Prkt<span style={{ color: "#2E86C1" }}>.</span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop links */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
-              className={`text-sm font-medium transition-colors duration-150 ${
-                pathname === href ? "text-white" : "text-white/60 hover:text-white"
-              }`}
+              className="text-sm font-medium transition-colors duration-150"
+              style={{ color: pathname === href ? "#ffffff" : "rgba(255,255,255,0.6)" }}
             >
               {label}
             </Link>
           ))}
         </nav>
 
+        {/* Desktop CTA */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[#2E86C1] text-white text-sm font-semibold hover:bg-[#2472a8] active:scale-95 transition-all duration-150 shadow-lg shadow-[#2E86C1]/25"
+          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-white text-sm font-semibold active:scale-95 transition-opacity duration-150"
+          style={{
+            background: "#2E86C1",
+            boxShadow: "0 4px 16px rgba(46,134,193,0.3)",
+          }}
         >
           Gratis kennismaken
         </Link>
 
-        {/* Hamburger button */}
+        {/* Hamburger — mobile only */}
         <button
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 active:bg-white/15 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2E86C1]/60"
-          onClick={() => setOpen((v) => !v)}
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
           aria-label={open ? "Menu sluiten" : "Menu openen"}
+          aria-expanded={open}
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white"
+          style={{ background: "rgba(255,255,255,0.08)" }}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={20} strokeWidth={2.5} /> : <Menu size={20} strokeWidth={2.5} />}
         </button>
       </div>
 
       {/* Mobile dropdown */}
       <div
+        aria-hidden={!open}
+        className="md:hidden"
         style={{
-          maxHeight: open ? "480px" : "0px",
-          opacity: open ? 1 : 0,
           overflow: "hidden",
-          transition: "max-height 0.3s ease, opacity 0.2s ease",
-          background: "rgba(26,58,92,0.97)",
+          maxHeight: open ? "500px" : "0px",
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? "auto" : "none",
+          transition: "max-height 0.32s ease, opacity 0.22s ease",
+          background: "rgba(20,45,75,0.98)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
-          borderTop: open ? "1px solid rgba(255,255,255,0.08)" : "none",
+          borderTop: "1px solid rgba(255,255,255,0.07)",
         }}
-        className="md:hidden"
       >
-        <nav className="flex flex-col px-6 py-4 gap-1">
+        <nav className="flex flex-col px-6 pt-3 pb-6 gap-0">
           {navItems.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
-              onClick={() => setOpen(false)}
-              className={`py-3 text-base font-medium border-b border-white/8 transition-colors duration-150 ${
-                pathname === href ? "text-white" : "text-white/70 hover:text-white"
-              }`}
+              onClick={close}
+              className="py-4 text-base font-medium"
+              style={{
+                color: pathname === href ? "#ffffff" : "rgba(255,255,255,0.75)",
+                borderBottom: "1px solid rgba(255,255,255,0.07)",
+              }}
             >
               {label}
             </Link>
           ))}
           <Link
             href="/contact"
-            onClick={() => setOpen(false)}
-            className="mt-4 mb-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#2E86C1] text-white text-sm font-semibold hover:bg-[#2472a8] active:scale-95 transition-all duration-150 shadow-lg shadow-[#2E86C1]/25"
+            onClick={close}
+            className="mt-5 flex items-center justify-center py-3.5 rounded-full text-white text-sm font-semibold active:scale-95 transition-opacity duration-150"
+            style={{
+              background: "#2E86C1",
+              boxShadow: "0 4px 16px rgba(46,134,193,0.3)",
+            }}
           >
             Gratis kennismaken
           </Link>
