@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 50% 8%;
+    --foreground: 210 40% 98%;
+    --card: 215 50% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 50% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 207 66% 52%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 35% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 35% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 215 35% 18%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 35% 18%;
+    --input: 215 35% 18%;
+    --ring: 207 66% 52%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    @apply bg-transparent text-foreground;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ── Global text readability ── */
+/* Soft shadow on white text against dark/animated backgrounds */
+.text-white,
+[class*="text-white"] {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Body paragraphs on dark backgrounds — minimum opacity 0.92 */
+p.body-text {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
