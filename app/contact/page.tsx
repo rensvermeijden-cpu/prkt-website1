@@ -119,12 +119,6 @@ export default function Contact() {
             <div className="md:col-span-2 flex flex-col gap-4">
               {[
                 {
-                  icon: "📞",
-                  label: "Telefoon",
-                  value: "+31 (0)20 123 4567",
-                  note: "Ma–vr · 09:00–17:30",
-                },
-                {
                   icon: "💻",
                   label: "Werkwijze",
                   value: "Volledig online",
