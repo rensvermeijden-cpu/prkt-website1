@@ -119,12 +119,6 @@ export default function Contact() {
             <div className="md:col-span-2 flex flex-col gap-4">
               {[
                 {
-                  icon: "✉️",
-                  label: "E-mail",
-                  value: "hallo@prkt.nl",
-                  note: "Wij reageren binnen één werkdag",
-                },
-                {
                   icon: "📞",
                   label: "Telefoon",
                   value: "+31 (0)20 123 4567",
